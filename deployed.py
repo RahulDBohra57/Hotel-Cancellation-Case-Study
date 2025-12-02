@@ -47,4 +47,5 @@ prediction = model.predict_proba([input_list])[:,1][0]
 
 # Lets show the probability
 if st.button('Predict'):
+    prediction = float(prediction)
     st.success(f'Cancellation chances: {round(prediction,2) *100}%')
