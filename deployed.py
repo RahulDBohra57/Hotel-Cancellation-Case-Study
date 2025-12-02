@@ -15,7 +15,7 @@ st.title('INN HOTEL GROUP')
 st.header(':blue[This application will predict the chances of booking cancellation]')
 
 # Lets Take input from the user
-amnth = st.slider('Select your month of arrival',min_value=1,max_value=12,step=1)
+amnth = st.slider('Select your month of arrival.',min_value=1,max_value=12,step=1)
 wkd_lambda = (lambda x: 0 if x == 'Monday' else 
               1 if x =='Tuesday' else 
               2 if x == 'Wednesday' else 
@@ -23,17 +23,17 @@ wkd_lambda = (lambda x: 0 if x == 'Monday' else
               4 if x == 'Friday' else 
               5 if x == 'Saturday'else 
               6)
-awkd = wkd_lambda(st.selectbox('Select your weekday of arrival',['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']))
-dwkd = wkd_lambda(st.selectbox('Select your weekday of departure',['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']))
-wkend = st.number_input('Enter how mnant weekend nights are there in stay',min_value=1)
-wk = st.number_input('Enter how mnant weekday nights are there in stay',min_value=1)
+awkd = wkd_lambda(st.selectbox('Select your weekday of arrival.',['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']))
+dwkd = wkd_lambda(st.selectbox('Select your weekday of departure.',['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']))
+wkend = st.number_input('Enter how many weekend nights are there in stay.',min_value=1)
+wk = st.number_input('Enter how many weekday nights are there in stay.',min_value=1)
 totn = wkend + wk
-mkt = (lambda x: 0 if x=='Offline' else 1) (st.selectbox('How the booking is made',['Offline','Online']))
-lt = st.number_input('How many days prior the booking was made',min_value=1)
-price = st.number_input('What is average price per room',min_value=0)
-adults = st.number_input('How many adult members in booking')
-spcl = st.selectbox('Select the number of special request made',[0,1,2,3,4,5])
-park = (lambda x: 0 if x=='No' else 1)(st.selectbox('Does guest need parking space',['Yes','No']))
+mkt = (lambda x: 0 if x=='Offline' else 1) (st.selectbox('How the booking is made?',['Offline','Online']))
+lt = st.number_input('How many days prior the booking was made?',min_value=1)
+price = st.number_input('What is average price per room.',min_value=0)
+adults = st.number_input('How many adult members in booking.')
+spcl = st.selectbox('Select the number of special request made.',[0,1,2,3,4,5])
+park = (lambda x: 0 if x=='No' else 1)(st.selectbox('Does guest need parking space?',['Yes','No']))
 
 # Transform the data
 lt_t,price_t = transformer.transform([[lt,price]])[0]
